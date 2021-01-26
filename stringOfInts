@@ -1,0 +1,19 @@
+Write a function that takes a string which has integers inside it separated by spaces, and your task is to convert each integer in the string into an integer and return their sum.
+
+Example
+summy("1 2 3")  ==> 6
+
+-----------------------------------
+solutions
+
+
+def summy(string_of_ints):
+    string2 = string_of_ints.strip().split(' ')
+    res = len(string2)
+    sum_of_ints = 0
+    
+    for i, s in enumerate(string2):
+        if s!= ' ':
+            sum_of_ints = sum_of_ints + int(s)
+    
+    return sum_of_ints
