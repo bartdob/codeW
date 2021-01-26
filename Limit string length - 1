@@ -1,0 +1,39 @@
+The function must return the truncated version of the given string up to the given limit followed or concatenated by "..." if the result is shorter than the original. Return the same string if nothing was truncated.
+
+Example:
+
+solution('Testing String', 3) --> 'Tes...'
+solution('Testing String', 8) --> 'Testing ...'
+solution('Test', 8)           --> 'Test'
+
+----------------------------------------------------
+SOLUTION
+
+def solution(st, limit):
+    newS = ''
+    newSt = ''
+    lenSt = len(st)
+
+    print(lenSt, limit)
+
+    if lenSt > limit:
+        for i, s in enumerate(st):
+            if i < limit:
+                newSt = newSt + s
+            else:
+                newSt = newSt + ""
+        print newSt + "..."
+
+    elif lenSt <= limit:
+        for i, s in enumerate(st):
+            if i <= limit:
+                newSt = newSt + s
+        print(newSt)
+
+solution('Testing String', 3)
+print("--------------------------")
+solution('Testing String', 8)
+print("--------------------------")
+solution('Test', 10)
+print("--------------------------")
+solution('Test', 4)
