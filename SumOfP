@@ -1,0 +1,12 @@
+    ls.append(0)
+    lenS = len(ls)
+    newLs = []
+    sum = 0
+
+    for z in range(0, lenS):
+        for i, l in enumerate(ls):
+            sum = (sum + l)
+        newLs.append(sum)
+        sum = 0
+        ls.pop(0)
+    return newLs
