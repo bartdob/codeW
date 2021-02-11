@@ -1,0 +1,92 @@
+#For a given list [x1, x2, x3, ..., xn] compute the last (decimal) digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))).
+
+#E. g.,
+
+#last_digit([3, 4, 2]) == 1
+#because 3 ^ (4 ^ 2) = 3 ^ 16 = 43046721.
+
+#Beware: powers grow incredibly fast. For example, 9 ^ (9 ^ 9) has more than 369 millions of digits. lastDigit has to deal with such numbers efficiently.
+
+#Corner cases: we assume that 0 ^ 0 = 1 and that lastDigit of an empty list equals to 1.
+
+#This kata generalizes Last digit of a large number; you may find useful to solve it beforehand.
+
+def last_digit(lst):
+    pot = []
+    
+    if len(lst) == 0:
+        return 1
+    
+    if len(lst) == 2:
+        pot.append('1')
+    
+    if lst[0] == 0 and lst[1] == 0 and len(lst)==2:
+        return 1
+
+    if lst[0] == 0 and lst[1] == 0 and lst[2] == 0:
+        return 0
+
+    
+    if lst[0]>0:
+        first = lst[0]
+        a1 = str(first ** 1)
+        a2 = str(first ** 2)
+        a3 = str(first ** 3)
+        a4 = str(first ** 4)
+        #a5 = str(pow(first, 5))
+
+
+        pot.append(a1[-1])
+        pot.append(a2[-1])
+        pot.append(a3[-1])
+        pot.append(a4[-1])
+        #pot.append(a5[-1])
+        
+        if len(lst) == 2:
+            lst.append(1)
+        
+        rest = 0
+        
+#         if len(lst)==3:
+#             rest = pow(lst[1], lst[2])
+#         elif len(lst) == 4:
+#             rest1 = pow(lst[2], lst[3])
+#             rest = pow(lst[1], rest1)
+
+        if len(lst) == 3:
+             rest = lst[1] ** lst[2]
+        elif len(lst) == 4:
+             rest1 = lst[2]**lst[3]
+             rest = lst[1] ** rest1
+
+        dziel = 0
+        counter = 0
+        k = pot[0]
+        for s, j in enumerate(pot):
+            if k == j:
+                counter += 1
+                if counter == 2:
+                    dziel = s
+                    break
+        
+        if first <=3 and rest <=3:
+            return pow(first, rest)
+
+#         print (pot)
+#         print("liczby powtarzajace sie: ", dziel)
+        d = 0
+        # print("potenga 2 i 3 liczby: ", rest)
+        if dziel != 0:
+            d = (rest%dziel) # reszta z dzieleni
+
+
+#         print("reszta z dzielenia", d)
+
+        y = int(d)
+
+        if y == 0:
+            y=3
+        else:
+            y=y+1
+
+        return int(pot[y])
