@@ -1,0 +1,97 @@
+def valid_solution(board):
+    print ("===========================")
+    poz = 0
+    ok = True
+    pion = 0
+
+    while ok == True:
+        if sum(map(sum, board)) != 405:
+            ok = False
+            break
+        else:
+            ok = True
+        # print ("suma", ok)
+
+        if ok == False:
+            break
+
+        if ok == True:
+            for i in board:
+                for j in i:
+                    if j == 0:
+                        ok = False
+                        break
+            # print "1", ok
+
+        if ok == False:
+            break
+
+        if ok == True:
+            for i in board:
+                for j in i:
+                    if j == 0:
+                        ok = False
+                        break
+                    poz = poz + j
+                # print poz
+                if poz != 45:
+                    ok = False
+                    break
+                else: ok = True
+                poz = 0
+            # print "2", ok
+
+        if ok == False:
+            break
+
+        if ok == True:
+            for a, b in enumerate(board):
+                for g,c in enumerate(b):
+                    pion = pion + board[g][a]
+                if pion != 45:
+                    ok = False
+                    break
+                else:
+                    ok = True
+                pion = 0
+            # print ("pion", ok)
+
+        if ok == False:
+            break
+
+        # if ok == False:
+        #     break
+
+        # if ok == True:
+        #     for k in range (0, 8):
+        #         for a, b in enumerate(board):
+        #             for g,c in enumerate(b):
+        #                 pion = pion + board[g][a]
+        #             print "pion1", pion
+        #             if pion != 45:
+        #                 ok = False
+        #                 break
+        #             else: ok = True
+        #             pion = 0
+        #     print (ok)
+
+        blocks = []
+        for i in range(0, 9, 3):
+            for j in range(0, 9, 3):
+                blocks.append(board[i][j:j+3] + board[i+1][j:j+3] + board[i+2][j:j+3])
+
+            for i in blocks:
+                for j in i:
+                    if j == 0:
+                        ok = False
+                        break
+                    poz = poz + j
+                    if poz != 45:
+                        ok = False
+                    else: ok = True
+                poz = 0
+            # print (ok)
+        # print ok
+        break
+
+    print("ostatecznie: ", ok)
