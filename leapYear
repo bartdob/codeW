@@ -1,0 +1,85 @@
+What date corresponds to the nth day of the year?
+The answer depends on whether the year is a leap year or not.
+
+Write a function that will help you determine the date if you know the number of the day in the year, as well as whether the year is a leap year or not.
+The function accepts the day number and a boolean value isLeap as arguments, and returns the corresponding date of the year as a string "Month, day".
+Only valid combinations of a day number and isLeap will be tested.
+
+SOLUTION=======================
+
+
+
+def get_day(day, is_leap):
+    print (day, is_leap)
+    if is_leap == False:
+        if day > 0 and day <= 31:
+            return ("January, %s" %day) # styczen 31
+        if day > 31 and day < 60:
+            day-=31
+            return ("February, %s" %day) # luty 28
+        if day >= 60 and day < 91:
+            day-=59
+            return ("March, %s" %day)  # marzec 31
+        if day >= 91 and day < 121:
+            day-=90
+            return ("April, %s" %day) #kwiecień 30
+        if day >= 121 and day < 152:
+            day-=120
+            return ("May, %s" %day) # maj 31
+        if day >= 152 and day < 182:
+            day-=151
+            return ("June, %s" %day) # czerwiec 30
+        if day >= 182 and day < 213:
+            day-=181
+            return ("July, %s" %day) # lipiec 31
+        if day >= 213 and day < 244: # sierpien 31
+            day-=212
+            return ("August, %s" %day)
+        if day >= 244 and day < 274: #wrzesien 30
+            day-=243
+            return ("September, %s" %day)
+        if day >= 274 and day < 305: # pazdz 31
+            day-=273
+            return ("October, %s" %day)
+        if day >= 305 and day < 335: # listp 30
+            day-=304
+            return ("November, %s" %day)
+        if day >= 335 and day < 366: # grudzien 31
+            day-=334
+            return ("December, %s" %day)
+    if is_leap == True:
+        if day >= 0 and day <= 31:
+            return ("January, %s" %day) # styczen 31
+        if day > 31 and day < 61:
+            day-=31
+            return ("February, %s" %day) # luty 28
+        if day >= 61 and day < 92:
+            day-=60
+            return ("March, %s" %day)  # marzec 31
+        if day >= 92 and day < 122:
+            day-=91
+            return ("April, %s" %day) #kwiecień 30
+        if day >= 122 and day < 153:
+            day-=121
+            return ("May, %s" %day) # maj 31
+        if day >= 153 and day < 183:
+            day-=152
+            return ("June, %s" %day) # czerwiec 30
+        if day >= 183 and day < 214:
+            day-=182
+            return ("July, %s" %day) # lipiec 31
+        if day >= 214 and day < 245: # sierpien 31
+            day-=213
+            return ("August, %s" %day)
+        if day >= 245 and day < 275: #wrzesien 30
+            day-=244
+            return ("September, %s" %day)
+        if day >= 275 and day < 306: # pazdz 31
+            day-=274
+            return ("October, %s" %day)
+        if day >= 306 and day < 336: # listp 30
+            day-=305
+            return ("November, %s" %day)
+        if day >= 336 and day <= 366: # grudzien 31
+            day-=335
+            return ("December, %s" %day)
