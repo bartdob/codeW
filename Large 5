@@ -1,0 +1,35 @@
+Complete the solution so that it returns the greatest sequence of five consecutive digits found within the number given. 
+The number will be passed in as a string of only digits. 
+It should return a five digit integer. The number passed may be as large as 1000 digits.
+
+def solution(digits):
+    ind = 0
+    nr = []
+    counter = 0
+    arr1 = []
+    arr=[]
+    nr1=""
+    digits = str(digits)
+    Len = len(digits)
+    for i in digits:
+        arr.append(i)
+        #print (i)
+
+    lMax = max(arr)
+
+    for j, k in enumerate(digits):
+        if k == lMax:
+            ind = j
+            nr1=""
+            for i in range(ind, ind+5):
+                nr1 = nr1 + digits[i]
+                i += 0
+                counter += 1
+                if counter==5 or i==len(digits)-1:
+                    arr1.append(int(nr1))
+                    counter = 0
+                    break
+
+    maxx = max(arr1)
+
+    return (maxx)
