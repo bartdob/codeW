@@ -1,0 +1,23 @@
+def cumulative_triangle(n):
+    if n == 1:
+        return 1
+    else:
+        n1 = n-1
+        pop = 0
+        pop = ((n*n)-n)/2
+        sump = 0
+        elem = 0
+        elem = ((n+1)*n)/2
+        sume= 0
+
+        # for i in range(0, int(elem)):
+        #     sump = sump + i
+
+        elem = 0
+        elem = ((n+1)*n)/2
+        sume= 0
+        for i in range(int(pop)+1, int(elem)+1):
+            sume = sume + i
+    sum_ = sume
+
+    return sum_
